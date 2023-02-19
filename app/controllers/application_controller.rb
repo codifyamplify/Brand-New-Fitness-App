@@ -37,6 +37,14 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  patch '/users/:id' do
+    user = User.find(params[:id])
+    user.update(
+      name: params[:name]
+    )
+    user.to_json
+  end
+
 # EXERCISE ROUTES
   # build READ route - GET all exercises (.all), get a specific exercise (.find)
   get '/exercises' do
