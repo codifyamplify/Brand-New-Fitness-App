@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2023_02_18_191704) do
     t.integer "sets"
     t.integer "reps"
     t.string "rest"
+    t.integer "user_id"
   end
 
   create_table "users", force: :cascade do |t|
