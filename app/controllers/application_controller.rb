@@ -31,6 +31,11 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  delete '/users/:id' do
+    user = User.find(params[:id])
+    user.destroy
+    user.to_json
+  end
 
 # EXERCISE ROUTES
   # build READ route - GET all exercises (.all), get a specific exercise (.find)
@@ -59,6 +64,12 @@ class ApplicationController < Sinatra::Base
   end
 
   # build DELETE route - DELETE specific route, (.find, .destroy)
+  delete '/exercises/:id' do
+    exercise = Exercise.find(params[:id])
+    exercise.destroy
+    exercise.to_json
+  end
+
   # build UPDATE route - PATCH specific route, (.update)
 
 
