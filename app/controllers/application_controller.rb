@@ -71,7 +71,19 @@ class ApplicationController < Sinatra::Base
   end
 
   # build UPDATE route - PATCH specific route, (.update)
-
+  patch '/exercises/:id' do
+    exercise = Exercise.find(params[:id])
+    exercise.update(
+      name: params[:name],
+      muscle_group: params[:muscle_group],
+      weight: params[:weight],
+      sets: params[:sets],
+      reps: params[:reps],
+      rest: params[:rest],
+      user_id: params[:user_id]
+    )
+    exercise.to_json
+  end
 
 
 end
