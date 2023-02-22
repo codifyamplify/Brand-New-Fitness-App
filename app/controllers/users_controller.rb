@@ -3,12 +3,12 @@ class UsersController < ApplicationController
   # build READ route - GET all users (.all), get a specific user (.find)
   get '/users' do
     users = User.all
-    users.to_json
+    users.to_json(include: [:exercises])
   end
 
   get '/users/:id' do
     user = find_user
-    user.to_json
+    user.to_json(include: [:exercises])
   end
   # build CREATE route - POST new user, (.create)
   post '/users' do
