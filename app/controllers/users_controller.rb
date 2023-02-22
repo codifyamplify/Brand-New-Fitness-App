@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # build CREATE route - POST new user, (.create)
   post '/users' do
     user = User.create(user_params)
-    user.to_json
+    user.to_json(include: [:exercises])
   end
 
   delete '/users/:id' do
@@ -21,12 +21,12 @@ class UsersController < ApplicationController
     user.destroy
     user.to_json
   end
-
-  patch '/users/:id' do
-    user = find_user
-    user.update(user_params)
-    user.to_json
-  end
+# # patch works on user name but NOT exercises
+#   patch '/users/:id' do
+#     user = find_user
+#     user.update(user_params)
+#     user.to_json
+#   end
 
   private
   # a method used to specify which keys are allowed through params into the controller
