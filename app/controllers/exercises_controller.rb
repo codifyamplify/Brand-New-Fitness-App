@@ -3,18 +3,18 @@ class ExercisesController < ApplicationController
   # build READ route - GET all exercises (.all), get a specific exercise (.find)
   get '/exercises' do
     exercises = Exercise.all
-    exercises.to_json
+    exercises.to_json(include: [:user])
   end
 
   get '/exercises/:id' do
     exercise = find_exercise
-    exercise.to_json
+    exercise.to_json(include: [:user])
   end
 
   # build CREATE route - POST new exercise, (.create)
   post '/exercises' do
     exercise = Exercise.create(exercise_params)
-    exercise.to_json
+    exercise.to_json(include: [:user])
   end
 
   # build DELETE route - DELETE specific route, (.find, .destroy)
@@ -28,7 +28,7 @@ class ExercisesController < ApplicationController
   patch '/exercises/:id' do
     exercise = find_exercise
     exercise.update(exercise_params)
-    exercise.to_json
+    exercise.to_json(include: [:user])
   end
 
   private
