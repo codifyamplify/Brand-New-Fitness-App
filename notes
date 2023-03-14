@@ -1,0 +1,86 @@
+notes on things to consider adding:
+
+    conditional logic to your get requests to handle errors such as "user not found" or "exercise not found"
+        this looks like:
+    get "characters/:id" do
+        character = Character.find_by_id(params[:id])
+        if character
+            character.to_json(include: [:movies])
+        else
+            { message: "Sorry, that character cannot be found." }.to_json
+        end
+    end
+================================================
+    get '/reviews' do
+        Review.all.order(id: :desc).limit(5).to_json(include: [:game])
+    end
+    # This is like asking for the most recent five reviews
+==========================================================
+
+
+
+CURRENT COMMIT PLAN = 
+COMMIT MESSAGE = ""
+    
+INVESTIGATE = class methods for sorting instances in a particular order
+
+Reminders: do not forget to start with "bundle install" to install all the dependencies
+Reminders:  git commit -m "commit message in present tense"
+Reminders:  git commit -am "commit message" combines the "add files changed since last commit" and "committing them" into one line, and the commit message operates as normal
+
+GIT BRANCH TUTORIAL
+to create a new git branch: git checkout -b newBranchName
+    git checkout is how you switch branches
+    -b is how you create a new branch
+    here we combined the "switch branch" and "create branch" steps into one step
+check what branch you are in at any time: git branch
+    this will display all available branched and an * next to your current branch
+change what branch you are in: git checkout newBranchName
+    checkout is how you change branches
+    newBranchName is the name of the branch you want to switch to
+    we don't use -b here because -b is how you CREATE a new branch
+commits in branches
+    to be PERMITTED to change branched with checkout you are REQUIRED to make a commit
+    the commit histories are separatef
+    
+
+My commit count started at 39, so my first commit that I am responsible for brought the total to 40 commits. I assume I forked the incorrect branch, but want to record here the start of my commit count being 39 so I can accurately reflect my commit history to satisfy the 30+ commit history requirement.
+
+initial draft: fitness application
+    chest exercises
+    back exercises
+    shoulders exercises
+    biceps exercises
+    triceps exercises
+    legs exercises
+or
+    user model, has many muscles, has many exercises through muscle
+    muscle model, belongs to user
+    exercise model, belongs to muscle
+or
+    muscle model, has many exercises
+        id
+    exercise model, belongs to muscle
+        id
+        date
+        weight
+        sets
+        reps
+        rest
+or
+TRYING THIS
+    user model, has many exercises
+        name
+    exercise model, belongs to user
+        name
+        muscle_group
+        weight
+        sets
+        reps
+        rest
+FIRST STEPS
+    set up git for commits and backups
+    create model files
+    create migration files that contain table creation and attributes
+    create seed data manually
+
