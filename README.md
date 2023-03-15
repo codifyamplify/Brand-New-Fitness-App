@@ -1,147 +1,54 @@
 # Brand New Fitness App
 
-overview of project, purpose of project
+## Description
 
-# Requirements to run
+Brand New Fitness App aims to provide a simple single page app that can list, persist, delete and update the exercise information of users.
 
-# Installation
+## Goals
 
-# How to Use
+The goal of Brand New Fitness App is to serve as practice for creating both a backend and a frontend from scratch to get experiencing creating both ends of the process and making them work togehter intentionally. Full CRUD (create, read, update, delete) functionality between the front and backend working together is the primary goal.
 
+## Installation
 
-==========================
+Brand New Fitness App consists of a frontend and a backend, hosted in two separate GitHub respositories.
 
-# Phase 3 Project Guidelines
+Frontend GitHub Repo link: git@github.com:codifyamplify/new-brand-new-fitness-frontend.git
+Backend Github Repo Link: git@github.com:codifyamplify/Brand-New-Fitness-App.git
 
-## Learning Goals
+A new user can either copy these links and clone them to their local machine, each in their separate repositories, or they can click the < > Code button on the GitHub repo page and copy the SSH link to use for cloning on their local machine.
 
-- Build a web basic API with Sinatra and Active Record to support a React
-  frontend
+After both repositories are cloned, start the server for each end. Make sure you are in the directory your frontend was cloned to when you start your frontend server (npm start). Make sure you are in the director your backend was cloned to when you start your backend server (rake server). These commands can be run from the terminal.
 
-## Introduction
+Brand New Fitness App uses npm, React, and react-router-dom v5 for the frontend. While in the frontend directory runnning npm install should install all dependencies:
 
-Congrats on getting through all the material for Phase 3! Now's the time to put
-it all together and build something from scratch to reinforce what you know and
-expand your horizons.
+npm install
 
-The focus of this project is **building a Sinatra API backend** that uses
-**Active Record** to access and persist data in a database, which will be used
-by a separate **React frontend** that interacts with the database via the API.
+When ready, run npm start. Your frontend is up and running.
 
-## Requirements
+Brand New Fitness App uses ruby, Active-Record, and Sinatra for the backend. While in the backend directory running bundle install should install all dependencies:
 
-For this project, you must:
+bundle install
 
-- Use Active Record to interact with a database.
-- Have at least two models with a one-to-many relationship.
-- At a minimum, set up the following API routes in Sinatra:
-  - create and read actions for both models
-  - full CRUD capability for one of the models
-- Build a separate React frontend application that interacts with the API to
-  perform CRUD actions.
-- Implement proper front end state management. You should be updating state using a
-  setState function after receiving your response from a POST, PATCH, or DELETE 
-  request. You should NOT be relying on a GET request to update state. 
-- Use good OO design patterns. You should have separate classes for each of your
-  models, and create instance and class methods as necessary. 
-- Routes in your application (both client side and back end) should follow RESTful
-  conventions.
-- Use your back end optimally. Pass JSON for related associations to the front 
-  end from the back end. You should use active record methods in your controller to grab
-  the needed data from your database and provide as JSON to the front end. You
-  should NOT be relying on filtering front end state or a separate fetch request to
-  retrieve related data.
+When ready, run rake server. Your backend is up and running.
 
-For example, build a todo list application with a React frontend interface and a
-Sinatra backend API, where a user can:
+## Features
 
-- **Create** a new todo
-- **Read** a list of all todos
-- **Update** an individual todo
-- **Delete** a todo
+Brand New Fitness App boasts an astounding full CRUD functionality.
 
-A `Todo` can be tagged with a `Category`, so that each todo _belongs to_ a
-category and each category _has many_ todos.
+Existing users and exercises can be viewed from the Existing Users list and the Existing Exercises list.
+Each user card features a Delete User button which will remove that user card from the DOM as well as the database.
 
-## Getting Started
+Everywhere you see an exercise listed it will offer a delete button (which will do what you will expect, on both the front and the backend) as well as an Edit This Exercise button.
 
-### Backend Setup
+The latter will take you to a new component, an edit form with that exercise's existing data points pre-populated, and allow you to update them on form submission.
 
-This repository has all the starter code needed to get a Sinatra backend up and
-running. [**Fork and clone**][fork link] this repository to get started. Then, run
-`bundle install` to install the gems.
+Create, Read, Update, and Delete are all presented and accounted for.
 
-**Important**: Be sure you fork a copy of the repo into your GitHub account
-before cloning it. You can do this by using the link above or by clicking the
-"Octocat" button at the top of this page, then clicking "Fork" in the upper
-right corner of the repo page.
+## Links
 
-[fork link]: https://github.com/learn-co-curriculum/phase-3-sinatra-react-project/fork
+A brief video demonstraion of this app:
+https://youtu.be/lRs9oVNx65M
 
-The `app/controllers/application_controller.rb` file has an example GET route
-handler. Replace this route with routes for your project.
+Frontend: git@github.com:codifyamplify/new-brand-new-fitness-frontend.git
 
-You can start your server with:
-
-```console
-$ bundle exec rake server
-```
-
-This will run your server on port
-[http://localhost:9292](http://localhost:9292).
-
-### Frontend Setup
-
-Your backend and your frontend should be in **two different repositories**.
-
-Create a new repository in a **separate folder** with a React app for your
-frontend. To do this, `cd` out of the backend project directory, and use
-[create-react-app][] to generate the necessary code for your React frontend:
-
-```console
-$ npx create-react-app my-app-frontend
-```
-
-After creating the project locally, you should also
-[create a repository on GitHub][create repo] to host your repo and help
-collaborate, if you're working with a partner.
-
-### Fetch Example
-
-Your React app should make fetch requests to your Sinatra backend! Here's an
-example:
-
-```js
-fetch("http://localhost:9292/test")
-  .then((r) => r.json())
-  .then((data) => console.log(data));
-```
-
-## Project Tips
-
-- This project is intended to focus more on the backend than the frontend, so
-  try and keep the React side of things relatively simple. Focus on working with
-  Active Record and performing CRUD actions. What are some interesting queries you can write? What kinds of questions can you ask of your data?
-- Once you have a project idea, come up with a domain model and decide what
-  relationships exist between the models in your application. Use a tool like
-  [dbdiagram.io][] to help visualize your models.
-- Decide on your API endpoints. What data should they return? What kind of CRUD
-  action should they perform? What data do they need from the client?
-- Use [Postman][postman download] to test your endpoints.
-- Use `binding.pry` to debug your requests on the server. It's very helpful to use a
-  `binding.pry` in your controller within a route to see what `params` are being
-  sent.
-- Use the [Network Tab in the Dev Tools][network tab] in the frontend to debug
-  your requests.
-
-## Resources
-
-- [create-react-app][]
-- [dbdiagram.io][]
-- [Postman][postman download]
-
-[create-react-app]: https://create-react-app.dev/docs/getting-started
-[create repo]: https://docs.github.com/en/get-started/quickstart/create-a-repo
-[dbdiagram.io]: https://dbdiagram.io/
-[postman download]: https://www.postman.com/downloads/
-[network tab]: https://developer.chrome.com/docs/devtools/network/
+Backend: git@github.com:codifyamplify/Brand-New-Fitness-App.git
